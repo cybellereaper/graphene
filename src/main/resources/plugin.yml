@@ -1,0 +1,5 @@
+main: com.github.GraphenePlugin
+name: MinecraftPlugin
+author: Auuki
+version: 1.0.0-dev
+api-version: 1.19
