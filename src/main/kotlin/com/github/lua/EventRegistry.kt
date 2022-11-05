@@ -8,14 +8,14 @@ import org.luaj.vm2.LuaFunction
 import org.luaj.vm2.lib.jse.CoerceJavaToLua
 
 
-class EventRegistry(private val javaPlugin: JavaPlugin) : Listener {
+object EventRegistry : Listener {
     private val events: HashMap<String, ArrayList<LuaFunction>> by lazy(::HashMap)
 
     init {
         "BlockBreakEvent".register()
     }
 
-    fun registerEvents() = javaPlugin.server.pluginManager.registerEvents(this, javaPlugin)
+    fun registerEvents(javaPlugin: JavaPlugin) = javaPlugin.server.pluginManager.registerEvents(this, javaPlugin)
 
     fun isEvent(string: String): Boolean = events.contains(string)
 

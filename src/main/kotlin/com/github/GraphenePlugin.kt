@@ -32,6 +32,5 @@ class GraphenePlugin : JavaPlugin() {
     companion object {
         val luaGlobals: Globals = JsePlatform.standardGlobals()
         val classLoader: ClassLoader = Companion::class.java.classLoader
-
     }
 }
