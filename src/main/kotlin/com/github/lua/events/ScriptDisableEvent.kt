@@ -6,6 +6,7 @@ import org.bukkit.event.HandlerList
 
 class ScriptDisableEvent(val script: PluginObject) : Event() {
     override fun getHandlers(): HandlerList = handlerList
+
     companion object {
         @JvmStatic
         val handlerList = HandlerList()

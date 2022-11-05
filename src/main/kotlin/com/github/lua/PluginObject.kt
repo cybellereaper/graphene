@@ -27,20 +27,24 @@ data class PluginObject(
         fun enablePlugins() = scriptStorage.getAll().forEach(PluginObject::enablePlugin)
         fun disablePlugins() = scriptStorage.getAll().forEach(PluginObject::disablePlugin)
     }
+
     private val pluginObjects: ArrayList<PluginObject> by lazy(::ArrayList)
     fun reloadPlugin() {
         disablePlugin()
         enablePlugin()
     }
+
     fun getFunction(path: PluginObject, func: String): LuaValue {
         luaGlobals.get("dofile").call(LuaValue.valueOf(path._id))
         return luaGlobals.get(func)
     }
+
     fun hookEvent(event: String, function: LuaFunction) {
         if (!function.isfunction() && !EventRegistry.isEvent(event)) return
         val functionAdd = EventRegistry.get(event) ?: return
         functionAdd.add(function)
     }
+
     fun disablePlugin() {
         pluginObjects.remove(this)
         val event: LuaValue = getFunction(this, "onDisable")
@@ -48,6 +52,7 @@ data class PluginObject(
         event.call(CoerceJavaToLua.coerce(this))
         Bukkit.getServer().pluginManager.callEvent(ScriptDisableEvent(this))
     }
+
     fun enablePlugin() {
         try {
             val script = scriptStorage.get(_id) ?: return

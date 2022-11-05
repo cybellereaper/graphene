@@ -1,7 +1,7 @@
 package com.github
 
-import com.github.lua.events.commons.EventRegistry
 import com.github.lua.PluginObject
+import com.github.lua.events.commons.EventRegistry
 import com.github.lua.globals.GraphGlobals
 import org.bukkit.event.HandlerList
 import org.bukkit.plugin.java.JavaPlugin
