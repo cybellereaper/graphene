@@ -1,4 +1,4 @@
-package com.github.lua
+package com.github.lua.events.commons
 
 import org.bukkit.event.Event
 import org.bukkit.event.EventHandler

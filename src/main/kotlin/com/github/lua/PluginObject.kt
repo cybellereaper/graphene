@@ -4,6 +4,7 @@ import com.github.GraphenePlugin
 import com.github.commons.database.MongoStorage
 import com.github.lua.events.ScriptDisableEvent
 import com.github.lua.events.ScriptEnableEvent
+import com.github.lua.events.commons.EventRegistry
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.bukkit.Bukkit

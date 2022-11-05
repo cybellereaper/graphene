@@ -1,6 +1,6 @@
 package com.github
 
-import com.github.lua.EventRegistry
+import com.github.lua.events.commons.EventRegistry
 import com.github.lua.PluginObject
 import com.github.lua.globals.GraphGlobals
 import org.bukkit.event.HandlerList
@@ -10,11 +10,9 @@ import org.luaj.vm2.compiler.LuaC
 import org.luaj.vm2.lib.jse.JsePlatform
 
 class GraphenePlugin : JavaPlugin() {
-    private val luaEvents: EventRegistry = EventRegistry(this)
-
     override fun onEnable() {
         reload()
-        luaEvents.registerEvents()
+        EventRegistry.registerEvents(this)
     }
 
     override fun onDisable() {

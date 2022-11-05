@@ -1,4 +1,4 @@
-package com.github.lua
+package com.github.lua.events.commons
 
 enum class Events {
     BlockPhysicsEvent,
