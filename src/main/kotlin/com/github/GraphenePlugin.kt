@@ -23,7 +23,7 @@ class GraphenePlugin : JavaPlugin() {
     }
 
     override fun onDisable() {
-        PluginObject.disablePlugins()
+//        PluginObject.disablePlugins()
     }
 
     private fun reload() {

@@ -17,8 +17,8 @@ import org.luaj.vm2.lib.jse.CoerceJavaToLua
 
 @Serializable
 data class PluginObject(
-    @SerialName("_id") var _id: String = "Example",
-    val description: String = "",
+    @SerialName("_id") var _id: String = "Script",
+    val description: String = "This is a script?",
     val version: Int = 1,
     val pluginObjects: ArrayList<PluginObject> = arrayListOf()
 ) {
@@ -45,8 +45,8 @@ data class PluginObject(
     }
 
     fun getFunction(func: String): LuaValue {
-        luaGlobals.get("dofile").call(LuaValue.valueOf(this._id))
-        return luaGlobals.get(func)
+        val gl = luaGlobals.load(func)
+        return gl.get(func).call(LuaValue.valueOf(this._id))
     }
 
     fun hookEvent(event: String, function: LuaFunction) {
@@ -56,11 +56,16 @@ data class PluginObject(
     }
 
     fun disablePlugin() {
-        pluginObjects.remove(this)
-        val event: LuaValue = getFunction("onDisable")
-        if (!event.isfunction()) return
-        event.call(CoerceJavaToLua.coerce(this))
-        Bukkit.getServer().pluginManager.callEvent(ScriptDisableEvent(this))
+        try {
+            val script = scriptStorage.get(StringId(_id)) ?: return
+            val event: LuaValue = script.getFunction("OnDisable")
+            if (!event.isfunction()) return
+            event.call(CoerceJavaToLua.coerce(this))
+            Bukkit.getServer().pluginManager.callEvent(ScriptDisableEvent(this))
+            pluginObjects.remove(this)
+        } catch (e: LuaError) {
+            println("Error while disabling ${this._id} Message:\n${e.message}")
+        }
     }
 
     fun enablePlugin() {

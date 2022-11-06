@@ -10,5 +10,6 @@ enum class Events {
     BlockExpEvent,
     BlockFadeEvent,
     BlockFormEvent,
+    PlayerJoinEvent
 
 }

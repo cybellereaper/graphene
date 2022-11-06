@@ -22,11 +22,5 @@ class LuaObject : LuaTable() {
                 return CoerceJavaToLua.coerce(data)
             }
         } as LuaValue
-//        this["newYaml"] = object : VarArgFunction() {
-//            override fun invoke(args: Varargs): Varargs {
-//                val data = YamlFile(args.checkjstring(1))
-//                return CoerceJavaToLua.coerce(data)
-//            }
-//        } as LuaValue
     }
 }
