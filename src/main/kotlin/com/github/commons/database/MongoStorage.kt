@@ -14,7 +14,7 @@ class MongoStorage<T : Any>(clazz: Class<T>, databaseName: String, collectionNam
         collection.updateOneById(id, entity, UpdateOptions().apply { upsert(true) })
     }
 
-    fun get(id: String): T? = collection.findOneById(id)
+    override fun get(id: Id<T>): T? = collection.findOneById(id)
 
     override fun getAll(): List<T> = collection.find().toList()
 

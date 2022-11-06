@@ -21,13 +21,13 @@ object GraphGlobals {
         return object : VarArgFunction() {
             override fun invoke(args: Varargs): Varargs {
                 val s: Class<*> = Class.forName(args.checkjstring(1), true, GraphenePlugin.classLoader)
-                val coerceJavaToLua = CoerceJavaToLua.coerce(s?.getConstructor()).invoke(args.subargs(2))
+                val coerceJavaToLua = CoerceJavaToLua.coerce(s.getConstructor()).invoke(args.subargs(2))
                 return CoerceJavaToLua.coerce(coerceJavaToLua)
             }
         }
     }
 
-    private fun tableFromValues(): VarArgFunction? {
+    private fun tableFromValues(): VarArgFunction {
         return object : VarArgFunction() {
             override fun invoke(args: Varargs): Varargs {
                 return LuaTable(LuaValue.listOf(args.checkuserdata(1) as Array<out LuaValue>))
