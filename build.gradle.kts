@@ -24,9 +24,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
     implementation("org.litote.kmongo:kmongo:4.7.2")
     implementation("org.luaj:luaj-jse:3.0.1")
-    implementation("com.googlecode.json-simple:json-simple:1.1.1")
-
-
 }
 
 tasks.test {

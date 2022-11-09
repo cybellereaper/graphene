@@ -35,7 +35,7 @@ object EventRegistry : Listener {
         val callbacks = this.luaFunctions() ?: return
         callbacks.forEach { it.call(CoerceJavaToLua.coerce(e as Any)) }
     }
-
+    
     @EventHandler
     fun onPlayerQuit(e: PlayerQuitEvent) {
         e.eventName.call(e)

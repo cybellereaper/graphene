@@ -11,26 +11,20 @@ import java.util.regex.Matcher
 
 object LuaObject : LuaTable() {
     init {
-        this["newList"] = object : VarArgFunction() {
-            override fun invoke(args: Varargs): Varargs {
-                val data: ArrayList<*> = ArrayList<Any?>()
-                return CoerceJavaToLua.coerce(data)
-            }
-        } as LuaValue
-        this["newFile"] = object : VarArgFunction() {
-            override fun invoke(args: Varargs): Varargs {
-                var s = args.checkjstring(1)
-                val sep = "\\"
-                s = s.replace("/".toRegex(), Matcher.quoteReplacement(sep))
-                val data = File(s)
-                return CoerceJavaToLua.coerce(data)
-            }
-        } as LuaValue
-//        this["newYaml"] = object : VarArgFunction() {
-//            override fun invoke(args: Varargs): Varargs {
-//                val data = YamlFile(args.checkjstring(1))
-//                return CoerceJavaToLua.coerce(data)
-//            }
-//        } as LuaValue
+        (VarArgFunction1() as LuaValue).also { this["newFile"] = it }
+        (VarArgFunction2() as LuaValue).also { this["newList"] = it }
+    }
+
+    internal class VarArgFunction2 : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs = CoerceJavaToLua.coerce(arrayListOf<Any?>())
+    }
+
+    internal class VarArgFunction1 : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            var raw = args.checkjstring(1)
+            raw = raw.replace("/".toRegex(), Matcher.quoteReplacement("\\"))
+            val data = File(raw)
+            return CoerceJavaToLua.coerce(data)
+        }
     }
 }

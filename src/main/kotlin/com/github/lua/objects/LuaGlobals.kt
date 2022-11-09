@@ -1,4 +1,4 @@
-package com.github.lua.globals
+package com.github.lua.objects
 
 import com.github.Graphene
 import org.luaj.vm2.LuaTable
@@ -67,5 +67,23 @@ object LuaGlobals {
         return map
     }
 
+    internal class LuaGlobalVar1 : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            val s: Class<*> = Class.forName(args.checkjstring(1), true, Graphene.classLoader)
+            val coerceJavaToLua = CoerceJavaToLua.coerce(s.getConstructor()).invoke(args.subargs(2))
+            return CoerceJavaToLua.coerce(coerceJavaToLua)
+        }
+    }
 
+    internal class LuaGlobalVar2 : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            return LuaTable(listOf(args.checkuserdata(1) as Array<LuaValue?>))
+        }
+    }
+
+    internal class LuaGlobalVar3 : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            return CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
+        }
+    }
 }

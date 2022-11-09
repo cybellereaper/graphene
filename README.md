@@ -23,6 +23,7 @@ end
 
 #### Why?
 
-This project was created for people, who get tired of compiling their code and want to contribute more frequently and faster without having to "mess" with the compiler, where they can just drag-&-drop from each server.
+This project was created for people, who get tired of compiling their code and want to contribute more frequently and
+faster without having to "mess" with the compiler, where they can just drag-&-drop from each server.
 
 #### Repository is under Mozilla License.
