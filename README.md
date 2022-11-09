@@ -1,10 +1,10 @@
-<div id="Graphene" align="center">
-    <img src="assets\grap.png" width="40%"/>
-    <h4>Graphene Lua Script</h4>
-    <h4>Highly in development stages, some features won't work</h4>
-</div>
+<div align="center"><img src="assets\grap.png" width="40%"/></div>
 
-<h4>Example Event Code</h4>
+#### Graphene Lua Scripting Engine 
+
+Highly in development stages and some features probably won't work.
+
+#### Event Example (some events don't work yet)
 
 ```lua
 function onEnable(plugin)
@@ -15,3 +15,4 @@ function onBlockBreakEvent(event)
     player:sendMessage("kaboom!")
 end
 ```
+
