@@ -9,7 +9,6 @@ import com.github.lua.events.ScriptEnableEvent
 import kotlinx.serialization.Serializable
 import org.bukkit.plugin.java.JavaPlugin
 import org.litote.kmongo.id.StringId
-import org.luaj.vm2.Globals
 import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaFunction
 import org.luaj.vm2.LuaValue

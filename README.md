@@ -1,6 +1,6 @@
 <div align="center"><img src="assets\grap.png" width="40%"/></div>
 
-#### Graphene Lua Scripting Engine 
+#### Graphene Lua Scripting Engine
 
 Highly in development stages and some features probably won't work.
 
@@ -17,4 +17,5 @@ end
 ```
 
 #### Project requires:
+
 - MongoDB

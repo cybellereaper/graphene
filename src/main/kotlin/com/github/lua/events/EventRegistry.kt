@@ -1,6 +1,5 @@
 package com.github.lua.events
 
-import com.github.lua.events.EventRegistry.luaFunctions
 import org.bukkit.Bukkit
 import org.bukkit.event.Event
 import org.bukkit.event.EventHandler
@@ -52,6 +51,7 @@ object EventRegistry : Listener {
         e.eventName.call(e)
 
     }
+
     @EventHandler
     fun onInventoryClick(e: InventoryClickEvent) {
         if (e.clickedInventory == null) return
