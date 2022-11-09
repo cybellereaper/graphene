@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="boom 2.0!">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/Graphene.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/Graphene.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/LoadScriptEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/LoadLuaScript.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" afterDir="false" />
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Renamed `Script.kt` to `LuaScript.kt`">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaGlobals.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaGlobals.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaObject.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668033759108</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Renamed `Script.kt` to `LuaScript.kt`">
+      <created>1668033970979</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1668033970979</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -376,7 +381,8 @@
     <MESSAGE value="Refactor and made code more performant?" />
     <MESSAGE value="Refactored" />
     <MESSAGE value="boom 2.0!" />
-    <option name="LAST_COMMIT_MESSAGE" value="boom 2.0!" />
+    <MESSAGE value="Renamed `Script.kt` to `LuaScript.kt`" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed `Script.kt` to `LuaScript.kt`" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

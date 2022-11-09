@@ -10,10 +10,11 @@ import org.luaj.vm2.lib.jse.CoerceJavaToLua
 
 object LuaGlobals {
     fun register() {
-        val globals = Graphene.globals
-        globals["listFromTable"] = listFromTable
-        globals["tableFromValues"] = tableFromValues
-        globals["newInstance"] = newInstance
+        with(Graphene.globals) {
+            listFromTable.also { this["listFromTable"] = it }
+            tableFromValues.also { this["tableFromValues"] = it }
+            newInstance.also { this["newInstance"] = it }
+        }
     }
 
     private val tableFromValues by lazy {
