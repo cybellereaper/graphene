@@ -1,5 +1,5 @@
 main: com.github.Graphene
-name: MinecraftPlugin
-author: Auuki
+name: Graphene
+authors: [Auuki, Alicyclic]
 version: 1.0.0-dev
 api-version: 1.19
