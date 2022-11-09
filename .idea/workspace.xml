@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Refactor and made code more performant?">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="boom!">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/Graphene.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/Graphene.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/LuaAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/LuaAPI.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/Script.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

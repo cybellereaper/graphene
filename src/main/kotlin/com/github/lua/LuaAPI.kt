@@ -5,9 +5,8 @@ import com.github.lua.events.Event
 import com.github.lua.objects.LuaObject
 
 object LuaAPI {
-    fun register() {
-        val globals = Graphene.globals
-        globals.set("cEvent", Event)
-        globals.set("cObject", LuaObject)
+    fun register() = with(Graphene.globals) {
+        set("cEvent", Event)
+        set("cObject", LuaObject)
     }
 }
