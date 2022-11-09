@@ -5,8 +5,8 @@ import org.luaj.vm2.lib.VarArgFunction
 import org.luaj.vm2.lib.jse.CoerceJavaToLua
 
 
-internal class `GlobalLib$2` : VarArgFunction() {
+internal class LuaGlobalVar3 : VarArgFunction() {
     override fun invoke(args: Varargs): Varargs {
-        return CoerceJavaToLua.coerce(args.checkjstring(1))
+        return CoerceJavaToLua.coerce(LuaGlobals.listFromTable(args.checktable(1)))
     }
 }

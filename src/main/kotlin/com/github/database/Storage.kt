@@ -1,4 +1,4 @@
-package com.github.commons.database
+package com.github.database
 
 import org.litote.kmongo.Id
 

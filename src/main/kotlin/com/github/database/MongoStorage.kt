@@ -1,4 +1,4 @@
-package com.github.commons.database
+package com.github.database
 
 import com.mongodb.MongoClientSettings
 import com.mongodb.client.model.UpdateOptions

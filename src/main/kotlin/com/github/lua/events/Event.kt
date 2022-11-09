@@ -8,6 +8,7 @@ import org.luaj.vm2.LuaValue
 import org.luaj.vm2.Varargs
 import org.luaj.vm2.lib.VarArgFunction
 
+
 object Event : LuaTable() {
     init {
         this["callCommand"] = object : VarArgFunction() {

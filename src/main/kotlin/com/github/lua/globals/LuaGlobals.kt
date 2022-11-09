@@ -1,7 +1,6 @@
 package com.github.lua.globals
 
-import com.github.GraphenePlugin
-import org.luaj.vm2.Globals
+import com.github.Graphene
 import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
 import org.luaj.vm2.Varargs
@@ -9,41 +8,27 @@ import org.luaj.vm2.lib.VarArgFunction
 import org.luaj.vm2.lib.jse.CoerceJavaToLua
 
 
-object GraphGlobals {
+object LuaGlobals {
     fun register() {
-        val globals: Globals = GraphenePlugin.luaGlobals
-        globals["listFromTable"] = listFromTable() as LuaValue
-        globals["tableFromValues"] = tableFromValues() as LuaValue
-        globals["newInstance"] = newInstance() as LuaValue
+        val globals = Graphene.globals
+        globals["listFromTable"] = listFromTable
+        globals["tableFromValues"] = tableFromValues
+        globals["newInstance"] = newInstance
     }
 
-    private fun newInstance(): VarArgFunction {
-        return object : VarArgFunction() {
-            override fun invoke(args: Varargs): Varargs {
-                val s: Class<*> = Class.forName(args.checkjstring(1), true, GraphenePlugin.classLoader)
-                val coerceJavaToLua = CoerceJavaToLua.coerce(s.getConstructor()).invoke(args.subargs(2))
-                return CoerceJavaToLua.coerce(coerceJavaToLua)
-            }
+    private val tableFromValues = object : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            return LuaTable(listOf(args.checkuserdata(1) as Array<out LuaValue>))
         }
-    }
+    } as LuaValue
 
-    private fun tableFromValues(): VarArgFunction {
-        return object : VarArgFunction() {
-            override fun invoke(args: Varargs): Varargs {
-                return LuaTable(LuaValue.listOf(args.checkuserdata(1) as Array<out LuaValue>))
-            }
+    private val listFromTable = object : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            return CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
         }
-    }
+    } as LuaValue
 
-    private fun listFromTable(): VarArgFunction {
-        return object : VarArgFunction() {
-            override fun invoke(args: Varargs): Varargs {
-                return CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
-            }
-        }
-    }
-
-    private fun listFromTable(luaTable: LuaTable): List<*> {
+    fun listFromTable(luaTable: LuaTable): List<*> {
         val map = HashMap<String, Any>()
         luaTable.keys()
             .map { luaTable[it] }.forEach {
@@ -57,6 +42,14 @@ object GraphGlobals {
             }
         return listOf(map.values)
     }
+
+    private val newInstance = object : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            val s: Class<*> = Class.forName(args.checkjstring(1), true, Graphene.classLoader)
+            val varargs = CoerceJavaToLua.coerce(s.getConstructor()).invoke(args.subargs(2))
+            return CoerceJavaToLua.coerce(varargs)
+        }
+    } as LuaValue
 
     fun mapOfTable(luaTable: LuaTable): HashMap<String, Any> {
         val map = HashMap<String, Any>()
@@ -73,4 +66,6 @@ object GraphGlobals {
             }
         return map
     }
+
+
 }

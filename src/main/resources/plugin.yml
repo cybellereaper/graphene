@@ -1,4 +1,4 @@
-main: com.github.GraphenePlugin
+main: com.github.Graphene
 name: MinecraftPlugin
 author: Auuki
 version: 1.0.0-dev
