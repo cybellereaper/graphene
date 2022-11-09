@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Updated README.md" />
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Refactor of all code!">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -293,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667993726656</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Refactor of all code!">
+      <created>1667994056117</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667994056117</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -324,7 +334,8 @@
     <MESSAGE value="final post!" />
     <MESSAGE value="Rigid!" />
     <MESSAGE value="Updated README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
+    <MESSAGE value="Refactor of all code!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor of all code!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
