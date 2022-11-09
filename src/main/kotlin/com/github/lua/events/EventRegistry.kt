@@ -35,22 +35,15 @@ object EventRegistry : Listener {
         val callbacks = this.luaFunctions() ?: return
         callbacks.forEach { it.call(CoerceJavaToLua.coerce(e as Any)) }
     }
-    
-    @EventHandler
-    fun onPlayerQuit(e: PlayerQuitEvent) {
-        e.eventName.call(e)
-    }
 
     @EventHandler
-    fun onPlayerJoin(e: PlayerJoinEvent) {
-        e.eventName.call(e)
-    }
+    fun onPlayerQuit(e: PlayerQuitEvent) = e.eventName.call(e)
 
     @EventHandler
-    fun onBlockBreakEvent(e: BlockBreakEvent) {
-        e.eventName.call(e)
+    fun onPlayerJoin(e: PlayerJoinEvent) = e.eventName.call(e)
 
-    }
+    @EventHandler
+    fun onBlockBreakEvent(e: BlockBreakEvent) = e.eventName.call(e)
 
     @EventHandler
     fun onInventoryClick(e: InventoryClickEvent) {
@@ -59,9 +52,7 @@ object EventRegistry : Listener {
     }
 
     @EventHandler
-    fun onInventoryOpen(e: InventoryOpenEvent) {
-        e.eventName.call(e)
-    }
+    fun onInventoryOpen(e: InventoryOpenEvent) = e.eventName.call(e)
 
     @EventHandler
     fun onInventoryClose(e: InventoryCloseEvent) = e.eventName.call(e)

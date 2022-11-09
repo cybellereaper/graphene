@@ -1,10 +1,10 @@
 package com.github.lua.events
 
-import com.github.lua.objects.Script
+import com.github.lua.objects.LuaScript
 import org.bukkit.event.Event
 import org.bukkit.event.HandlerList
 
-class LoadScriptEvent(val script: Script) : Event() {
+class LoadLuaScript(val luaScript: LuaScript) : Event() {
     var isEnabled: Boolean = false
 
     init {

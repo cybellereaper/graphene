@@ -3,9 +3,9 @@ package com.github
 import com.github.lua.LuaAPI
 import com.github.lua.events.EventRegistry
 import com.github.lua.objects.LuaGlobals
-import com.github.lua.objects.Script
-import com.github.lua.objects.Script.Companion.disablePlugins
-import com.github.lua.objects.Script.Companion.enablePlugins
+import com.github.lua.objects.LuaScript
+import com.github.lua.objects.LuaScript.Companion.disablePlugins
+import com.github.lua.objects.LuaScript.Companion.enablePlugins
 import org.bukkit.event.HandlerList
 import org.bukkit.plugin.java.JavaPlugin
 import org.luaj.vm2.Globals
@@ -22,7 +22,7 @@ class Graphene : JavaPlugin() {
             "org.litote.mongo.test.mapping.service",
             "org.litote.kmongo.jackson.JacksonClassMappingTypeService"
         )
-        Script.getOrDefault("test")
+        LuaScript.getOrDefault("test")
         LuaC.install(globals)
         globals.compiler = LuaC.instance
         this.disablePlugins()

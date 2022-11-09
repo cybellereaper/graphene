@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="boom!">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="boom 2.0!">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/Graphene.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/Graphene.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/LuaAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/LuaAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/Script.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/LoadScriptEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/LoadLuaScript.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/Script.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +326,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668028964396</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Refactored">
+      <created>1668033713241</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1668033713241</updated>
+    </task>
+    <task id="LOCAL-00021" summary="boom 2.0!">
+      <created>1668033759108</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1668033759108</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -360,7 +374,9 @@
     <MESSAGE value="Refactor of all code!" />
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Refactor and made code more performant?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor and made code more performant?" />
+    <MESSAGE value="Refactored" />
+    <MESSAGE value="boom 2.0!" />
+    <option name="LAST_COMMIT_MESSAGE" value="boom 2.0!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
