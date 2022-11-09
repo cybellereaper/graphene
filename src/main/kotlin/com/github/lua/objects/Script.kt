@@ -33,9 +33,9 @@ data class Script(
     }
 
     private fun getFunction(f: String, function: String?): LuaValue? = with(Graphene.globals) {
-       load(f).call()
-       return this[function]
-   }
+        load(f).call()
+        return this[function]
+    }
 
     companion object {
         private val eventful: HashSet<Script> by lazy(::HashSet)
