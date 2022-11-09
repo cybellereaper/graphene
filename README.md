@@ -16,3 +16,5 @@ function onBlockBreakEvent(event)
 end
 ```
 
+#### Project requires:
+- MongoDB
