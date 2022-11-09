@@ -16,17 +16,18 @@ object LuaGlobals {
         globals["newInstance"] = newInstance
     }
 
-    private val tableFromValues = object : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs {
-            return LuaTable(listOf(args.checkuserdata(1) as Array<out LuaValue>))
+    private val tableFromValues by lazy {
+        return@lazy object : VarArgFunction() {
+            override fun invoke(args: Varargs): LuaTable =
+                LuaTable(listOf(args.checkuserdata(1) as Array<out LuaValue>))
         }
-    } as LuaValue
+    }
 
-    private val listFromTable = object : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs {
-            return CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
+    private val listFromTable by lazy {
+        return@lazy object : VarArgFunction() {
+            override fun invoke(args: Varargs): Varargs = CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
         }
-    } as LuaValue
+    }
 
     fun listFromTable(luaTable: LuaTable): List<*> {
         val map = HashMap<String, Any>()
@@ -43,13 +44,15 @@ object LuaGlobals {
         return listOf(map.values)
     }
 
-    private val newInstance = object : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs {
-            val s: Class<*> = Class.forName(args.checkjstring(1), true, Graphene.classLoader)
-            val varargs = CoerceJavaToLua.coerce(s.getConstructor()).invoke(args.subargs(2))
-            return CoerceJavaToLua.coerce(varargs)
+    private val newInstance by lazy {
+        return@lazy object : VarArgFunction() {
+            override fun invoke(args: Varargs): Varargs {
+                val s: Class<*> = Class.forName(args.checkjstring(1), true, Graphene.classLoader)
+                val varargs = CoerceJavaToLua.coerce(s.getConstructor()).invoke(args.subargs(2))
+                return CoerceJavaToLua.coerce(varargs)
+            }
         }
-    } as LuaValue
+    }
 
     fun mapOfTable(luaTable: LuaTable): HashMap<String, Any> {
         val map = HashMap<String, Any>()
@@ -76,14 +79,10 @@ object LuaGlobals {
     }
 
     internal class LuaGlobalVar2 : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs {
-            return LuaTable(listOf(args.checkuserdata(1) as Array<LuaValue?>))
-        }
+        override fun invoke(args: Varargs): Varargs = LuaTable(listOf(args.checkuserdata(1) as Array<LuaValue?>))
     }
 
     internal class LuaGlobalVar3 : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs {
-            return CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
-        }
+        override fun invoke(args: Varargs): Varargs = CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
     }
 }

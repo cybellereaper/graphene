@@ -11,21 +11,25 @@ import org.luaj.vm2.lib.VarArgFunction
 
 object Event : LuaTable() {
     init {
-        this["callCommand"] = object : VarArgFunction() {
-            override fun invoke(args: Varargs): Varargs {
-                val data = args.checkuserdata(1) as Player
-                data.performCommand(args.checkjstring(2))
-                return NIL
-            }
-        } as LuaValue
-        this["callConsoleCommand"] = object : VarArgFunction() {
-            override fun invoke(args: Varargs): Varargs {
-                Bukkit.dispatchCommand(
-                    (Bukkit.getConsoleSender() as CommandSender),
-                    (args.checkjstring(1) as String)
-                )
-                return NIL
-            }
-        } as LuaValue
+        (VarArgFunction1() as LuaValue).also { this["callCommand"] = it }
+        (VarArgFunction2() as LuaValue).also { this["callConsoleCommand"] = it }
+    }
+
+    internal class VarArgFunction2 : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            Bukkit.dispatchCommand(
+                Bukkit.getConsoleSender() as CommandSender,
+                args.checkjstring(1) as String
+            )
+            return NIL
+        }
+    }
+
+    internal class VarArgFunction1 : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            val data = args.checkuserdata(1) as Player
+            data.performCommand(args.checkjstring(2))
+            return NIL
+        }
     }
 }
