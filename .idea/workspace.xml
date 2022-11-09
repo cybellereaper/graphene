@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Complete Working, Graphene!">
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="final post!">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/default_script.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/SpigotEvents.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/SpigotEvents.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/PluginObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/PluginObject.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +113,7 @@
       <recent name="com.github.lua" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Graphene [clean]">
+  <component name="RunManager" selected="Gradle.Graphene [shadowJar]">
     <configuration name="Graphene [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -176,8 +179,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Graphene [clean]" />
         <item itemvalue="Gradle.Graphene [shadowJar]" />
+        <item itemvalue="Gradle.Graphene [clean]" />
         <item itemvalue="Gradle.Graphene [knows]" />
       </list>
     </recent_temporary>
@@ -268,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667989633076</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="final post!">
+      <created>1667989863617</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1667989863617</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -296,7 +306,8 @@
     <MESSAGE value="README.md update!" />
     <MESSAGE value="workspace, upgraded?" />
     <MESSAGE value="Complete Working, Graphene!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete Working, Graphene!" />
+    <MESSAGE value="final post!" />
+    <option name="LAST_COMMIT_MESSAGE" value="final post!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

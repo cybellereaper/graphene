@@ -2,11 +2,10 @@ package com.github.lua.objects
 
 import com.github.Graphene
 import com.github.database.MongoStorage
+import com.github.lua.events.EventRegistry.isEvent
+import com.github.lua.events.EventRegistry.luaFunctions
 import com.github.lua.events.ScriptDisableEvent
 import com.github.lua.events.ScriptEnableEvent
-import com.github.lua.events.EventRegistry.luaFunctions
-import com.github.lua.events.EventRegistry.isEvent
-import com.github.lua.objects.PluginObject.Companion.enable
 import kotlinx.serialization.Serializable
 import org.bukkit.plugin.java.JavaPlugin
 import org.litote.kmongo.id.StringId
@@ -15,7 +14,6 @@ import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaFunction
 import org.luaj.vm2.LuaValue
 import org.luaj.vm2.lib.jse.CoerceJavaToLua
-import java.io.File
 
 @Serializable
 data class PluginObject(
@@ -30,23 +28,19 @@ data class PluginObject(
 ) {
     fun hookEvent(event: String?, function: LuaFunction) {
         if (!function.isfunction() && event?.isEvent() == false) return
-        val eventful =  event?.luaFunctions() ?: return
+        val eventful = event?.luaFunctions() ?: return
         eventful.add(function)
     }
 
-
     private fun getFunction(f: String, function: String?): LuaValue? {
-        val _H: Globals = Graphene.globals
-        _H.load(f).call()
-//        _H["dofile"].call(LuaValue.valueOf(f.path))
-        return _H[function]
+        val globals = Graphene.globals
+        globals.load(f).call()
+        return globals[function]
     }
 
     companion object {
         private val plugins: HashSet<PluginObject> by lazy(::HashSet)
         private val scriptStorage = MongoStorage(PluginObject::class.java, "test", "scripts")
-
-
 
         fun createDefaultScript(name: String) = StringId<PluginObject>(name).also {
             scriptStorage.get(it) ?: run {
@@ -89,14 +83,9 @@ data class PluginObject(
             }
         }
 
-        fun JavaPlugin.enablePlugins() {
-            scriptStorage.getAll()
-                .map { PluginObject(it._id, it.script) }.
-                forEach { enable(it) }
-        }
-
-//        fun JavaPlugin.enablePlugins() =
-//            File("scripts").listFiles()?.map { PluginObject(it.name, it.absoluteFile) }?.forEach { enable(it) }
+        fun JavaPlugin.enablePlugins() = scriptStorage.getAll()
+            .map { PluginObject(it._id, it.script) }
+            .forEach { enable(it) }
 
         fun JavaPlugin.disablePlugins() = scriptStorage.getAll().forEach { disable(it) }
     }
