@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Renamed `Script.kt` to `LuaScript.kt`">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaGlobals.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaGlobals.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaObject.kt" afterDir="false" />
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Kotlin-ize some objects?">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -345,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668033970979</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Kotlin-ize some objects?">
+      <created>1668034379633</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1668034379633</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -382,7 +389,8 @@
     <MESSAGE value="Refactored" />
     <MESSAGE value="boom 2.0!" />
     <MESSAGE value="Renamed `Script.kt` to `LuaScript.kt`" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed `Script.kt` to `LuaScript.kt`" />
+    <MESSAGE value="Kotlin-ize some objects?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kotlin-ize some objects?" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

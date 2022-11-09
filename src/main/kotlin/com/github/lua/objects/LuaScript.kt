@@ -10,8 +10,10 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.litote.kmongo.id.StringId
 import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaFunction
+import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
 import org.luaj.vm2.lib.jse.CoerceJavaToLua
+import java.util.regex.Matcher
 
 @Serializable
 data class LuaScript(
@@ -63,11 +65,6 @@ data class LuaScript(
             })
         } catch (e: LuaError) {
             e.printStackTrace()
-        }
-
-        fun JavaPlugin.reload(luaScript: LuaScript) {
-            disable(luaScript)
-            enable(luaScript)
         }
 
         private fun JavaPlugin.disable(luaScript: LuaScript) = try {
