@@ -37,10 +37,10 @@ object EventRegistry : Listener {
     }
 
     @EventHandler
-    fun onPlayerQuit(e: PlayerQuitEvent) = e.eventName.call(e)
+    fun onPlayerQuitEvent(e: PlayerQuitEvent) = e.eventName.call(e)
 
     @EventHandler
-    fun onPlayerJoin(e: PlayerJoinEvent) = e.eventName.call(e)
+    fun onPlayerJoinEvent(e: PlayerJoinEvent) = e.eventName.call(e)
 
     @EventHandler
     fun onBlockBreakEvent(e: BlockBreakEvent) = e.eventName.call(e)

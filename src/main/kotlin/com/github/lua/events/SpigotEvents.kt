@@ -55,4 +55,8 @@ enum class SpigotEvents {
     InventoryCloseEvent,
     InventoryOpenEvent,
     InventoryInteractEvent,
+
+
+    PlayerJoinEvent,
+    PlayerQuitEvent
 }

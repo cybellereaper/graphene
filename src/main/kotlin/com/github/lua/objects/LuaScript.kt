@@ -10,27 +10,21 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.litote.kmongo.id.StringId
 import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaFunction
-import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
 import org.luaj.vm2.lib.jse.CoerceJavaToLua
-import java.util.regex.Matcher
 
 @Serializable
 data class LuaScript(
     val _id: String = "example",
-    val code: String = "function onEnable(plugin)\n" +
-            "    plugin:hookEvent(\"BlockBreakEvent\", onBlockBreakEvent)\n" +
-            "end\n" +
-            "function onBlockBreakEvent(event) \n" +
-            "    player = event:getPlayer()\n" +
-            "    player:sendMessage(\"kaboom!\")\n" +
-            "end ",
+    val code: String = "function onEnable(a)a:hookEvent(\"BlockBreakEvent\",onBlockBreakEvent)end;function onBlockBreakEvent(b)player=b:getPlayer()player:sendMessage(\"kaboom!\")end",
     val inherit: HashSet<LuaScript> = hashSetOf(),
     var isEnabled: Boolean = false
 ) {
+
     fun hookEvent(event: String?, function: LuaFunction) {
-        if (!function.isfunction() && event?.isEvent() == false) return
-        val eventful = event?.luaFunctions() ?: return
+        val isEvent = event?.isEvent() ?: return
+        if (!function.isfunction() && !isEvent) return
+        val eventful = event.luaFunctions() ?: return
         eventful.add(function)
     }
 
@@ -63,6 +57,8 @@ data class LuaScript(
                 println("$_id is enabled!")
                 isEnabled = !isEnabled
             })
+
+
         } catch (e: LuaError) {
             e.printStackTrace()
         }
@@ -76,6 +72,7 @@ data class LuaScript(
                 val onDisable = getFunction(code, "onDisable") ?: return
                 onDisable.call(CoerceJavaToLua.coerce(this))
                 server.pluginManager.callEvent(LoadLuaScript(this))
+                eventful.clear()
                 isEnabled = !isEnabled
             })
         } catch (e: LuaError) {

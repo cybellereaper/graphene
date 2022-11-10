@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Kotlin-ize some objects?">
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="Last version, before adding in maybe commands or more functionality?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/grap.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/EventRegistry.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/SpigotEvents.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/events/SpigotEvents.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +69,14 @@
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
+    <option name="OPTIONS">
+      <set>
+        <option value="ROOT" />
+      </set>
     </option>
   </component>
   <component name="Git.Settings">
@@ -352,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668034379633</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Last version, before adding in maybe commands or more functionality?">
+      <created>1668035058134</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1668035058134</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -390,7 +409,8 @@
     <MESSAGE value="boom 2.0!" />
     <MESSAGE value="Renamed `Script.kt` to `LuaScript.kt`" />
     <MESSAGE value="Kotlin-ize some objects?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kotlin-ize some objects?" />
+    <MESSAGE value="Last version, before adding in maybe commands or more functionality?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last version, before adding in maybe commands or more functionality?" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

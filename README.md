@@ -1,4 +1,4 @@
-<div align="center"><img src="assets\grap.png" width="50%"/></div>
+<div align="center"><img src="assets\logo.png" width="50%"/></div>
 
 #### Graphene Lua Scripting Engine
 
