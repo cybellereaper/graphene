@@ -46,7 +46,7 @@ data class LuaScript(
             val coerceJavaToLua = CoerceJavaToLua.coerce(this) ?: return
             if (coerceJavaToLua == LuaValue.NIL) return
             onFunc.call(coerceJavaToLua)
-            println("$_id is enabled!")
+            println("$_id is $fn!")
         }
 
         fun enablePlugins() = luaScriptStorage.getAll().forEach { it.callFunc("onEnable") }
