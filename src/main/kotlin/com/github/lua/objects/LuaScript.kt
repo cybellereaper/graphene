@@ -54,6 +54,3 @@ data class LuaScript(
         fun disablePlugins() = luaScriptStorage.getAll().forEach { it.callFunc("onDisable") }
     }
 }
-
-
-
