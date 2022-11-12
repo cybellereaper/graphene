@@ -39,29 +39,19 @@ data class LuaScript(
             }
         }
 
-        private fun enable(luaScript: LuaScript): Unit = with(luaScript) with2@{
-            with(Graphene.globals) { this.load(code).call() ?: return@with2 }
-            val onEnable = getFunction(code, "onEnable")
-            if (onEnable == LuaValue.NIL || onEnable == null) return@with2
-            val coerceJavaToLua = CoerceJavaToLua.coerce(this)
-            if (coerceJavaToLua == LuaValue.NIL) return@with2
-            onEnable.call(coerceJavaToLua)
+        private fun LuaScript.callFunc(fn: String) {
+            with(Graphene.globals) { this.load(code).call() ?: return }
+            val onFunc = getFunction(code, fn) ?: return
+            if (onFunc == LuaValue.NIL) return
+            val coerceJavaToLua = CoerceJavaToLua.coerce(this) ?: return
+            if (coerceJavaToLua == LuaValue.NIL) return
+            onFunc.call(coerceJavaToLua)
             println("$_id is enabled!")
         }
 
-        private fun disable(luaScript: LuaScript): Unit = with(luaScript) with2@{
-            with(Graphene.globals) { this.load(code).call() ?: return@with2 }
-            val onEnable = getFunction(code, "onDisable")
-            if (onEnable == LuaValue.NIL || onEnable == null) return@with2
-            val coerceJavaToLua = CoerceJavaToLua.coerce(this)
-            if (coerceJavaToLua == LuaValue.NIL) return@with2
-            onEnable.call(coerceJavaToLua)
-            println("$_id is disabled!")
-        }
+        fun enablePlugins() = luaScriptStorage.getAll().forEach { it.callFunc("onEnable") }
 
-        fun enablePlugins() = luaScriptStorage.getAll().forEach { enable(it) }
-
-        fun disablePlugins() = luaScriptStorage.getAll().forEach { disable(it) }
+        fun disablePlugins() = luaScriptStorage.getAll().forEach { it.callFunc("onDisable") }
     }
 }
 

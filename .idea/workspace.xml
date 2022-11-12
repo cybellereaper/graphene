@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="upgrade">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e37d7f39-4263-43aa-81f9-07efdefa6492" name="Changes" comment="stable">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/lua/objects/LuaScript.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
