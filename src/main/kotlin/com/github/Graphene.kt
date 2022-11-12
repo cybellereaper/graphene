@@ -15,7 +15,7 @@ import org.luaj.vm2.lib.jse.JsePlatform
 
 class Graphene : JavaPlugin() {
     override fun onEnable() = reload()
-    override fun onDisable() = this.disablePlugins()
+    override fun onDisable() = disablePlugins()
 
     private fun reload() {
         System.setProperty(
@@ -25,12 +25,12 @@ class Graphene : JavaPlugin() {
         LuaScript.getOrDefault("test")
         LuaC.install(globals)
         globals.compiler = LuaC.instance
-        this.disablePlugins()
+        disablePlugins()
         HandlerList.unregisterAll(this)
         EventRegistry.registerEvents(this)
         LuaAPI.register()
         LuaGlobals.register()
-        this.enablePlugins()
+        enablePlugins()
     }
 
     companion object {

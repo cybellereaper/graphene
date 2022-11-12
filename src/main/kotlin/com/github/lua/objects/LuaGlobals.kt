@@ -54,36 +54,4 @@ object LuaGlobals {
             }
         }
     }
-
-    fun mapOfTable(luaTable: LuaTable): HashMap<String, Any> {
-        val map = HashMap<String, Any>()
-        luaTable.keys()
-            .map { luaTable[it.tojstring()] }
-            .forEach {
-                when {
-                    it.isboolean() -> map[it.tojstring()] = it.toboolean()
-                    it.isint() -> map[it.tojstring()] = it.isint()
-                    it.isnumber() -> map[it.tojstring()] = it.todouble()
-                    it.istable() -> mapOfTable(it.checktable())
-                    it.isstring() -> map[it.tojstring()] = it.tojstring()
-                }
-            }
-        return map
-    }
-
-    internal class LuaGlobalVar1 : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs {
-            val s: Class<*> = Class.forName(args.checkjstring(1), true, Graphene.classLoader)
-            val coerceJavaToLua = CoerceJavaToLua.coerce(s.getConstructor()).invoke(args.subargs(2))
-            return CoerceJavaToLua.coerce(coerceJavaToLua)
-        }
-    }
-
-    internal class LuaGlobalVar2 : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs = LuaTable(listOf(args.checkuserdata(1) as Array<LuaValue?>))
-    }
-
-    internal class LuaGlobalVar3 : VarArgFunction() {
-        override fun invoke(args: Varargs): Varargs = CoerceJavaToLua.coerce(listFromTable(args.checktable(1)))
-    }
 }

@@ -4,9 +4,7 @@ import com.github.Graphene
 import com.github.database.MongoStorage
 import com.github.lua.events.EventRegistry.isEvent
 import com.github.lua.events.EventRegistry.luaFunctions
-import com.github.lua.events.LoadLuaScript
 import kotlinx.serialization.Serializable
-import org.bukkit.plugin.java.JavaPlugin
 import org.litote.kmongo.id.StringId
 import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaFunction
@@ -17,13 +15,10 @@ import org.luaj.vm2.lib.jse.CoerceJavaToLua
 data class LuaScript(
     val _id: String = "example",
     val code: String = "function onEnable(a)a:hookEvent(\"BlockBreakEvent\",onBlockBreakEvent)end;function onBlockBreakEvent(b)player=b:getPlayer()player:sendMessage(\"kaboom!\")end",
-    val inherit: HashSet<LuaScript> = hashSetOf(),
-    var isEnabled: Boolean = false
 ) {
 
-    fun hookEvent(event: String?, function: LuaFunction) {
-        val isEvent = event?.isEvent() ?: return
-        if (!function.isfunction() && !isEvent) return
+    fun hookEvent(event: String, function: LuaFunction) {
+        if (!function.isfunction() && !event.isEvent()) return
         val eventful = event.luaFunctions() ?: return
         eventful.add(function)
     }
@@ -46,44 +41,42 @@ data class LuaScript(
             }
         }
 
-        private fun JavaPlugin.enable(luaScript: LuaScript) = try {
-            with(luaScript, fun LuaScript.() {
-                if (code.isEmpty()) return
-                with(Graphene.globals) { load(code).call() }
-                val onEnable = getFunction(code, "onEnable") ?: return
+        private fun enable(luaScript: LuaScript) = try {
+            with(luaScript) with1@{
+                with(Graphene.globals) { this.load(code).call() ?: return@with1 }
+                val onEnable = getFunction(code, "onEnable")
+                if (onEnable == LuaValue.NIL || onEnable == null) return@with1
+                val coerceJavaToLua = CoerceJavaToLua.coerce(this)
+                if (coerceJavaToLua == LuaValue.NIL || coerceJavaToLua == LuaValue.NILS) return@with1
                 eventful.plusAssign(this)
-                onEnable.call(CoerceJavaToLua.coerce(this))
-                server.pluginManager.callEvent(LoadLuaScript(this))
+                onEnable.call(coerceJavaToLua)
                 println("$_id is enabled!")
-                isEnabled = !isEnabled
-            })
-
-
+            }
         } catch (e: LuaError) {
             e.printStackTrace()
         }
 
-        private fun JavaPlugin.disable(luaScript: LuaScript) = try {
+        private fun disable(luaScript: LuaScript) = try {
             with(luaScript, fun LuaScript.() {
                 if (!eventful.contains(luaScript)) return
-                eventful.minusAssign(this)
                 println("$_id has been disabled!")
-                with(Graphene.globals) { load(code).call() }
-                val onDisable = getFunction(code, "onDisable") ?: return
-                onDisable.call(CoerceJavaToLua.coerce(this))
-                server.pluginManager.callEvent(LoadLuaScript(this))
+                with(Graphene.globals) { this.load(code).call() }
+                val onDisable = getFunction(code, "onDisable")
+                if (onDisable == LuaValue.NIL || onDisable == null) return
+                val coerceJavaToLua = CoerceJavaToLua.coerce(this)
+                if (coerceJavaToLua == LuaValue.NIL) return
+                onDisable.call(coerceJavaToLua)
                 eventful.clear()
-                isEnabled = !isEnabled
             })
         } catch (e: LuaError) {
             e.printStackTrace()
         }
 
-        fun JavaPlugin.enablePlugins() = luaScriptStorage.getAll()
+        fun enablePlugins() = luaScriptStorage.getAll()
             .map { LuaScript(it._id, it.code) }
             .forEach { enable(it) }
 
-        fun JavaPlugin.disablePlugins() = eventful.forEach { disable(it) }
+        fun disablePlugins() = eventful.forEach { disable(it) }
     }
 }
 
