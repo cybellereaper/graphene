@@ -1,13 +1,14 @@
 package com.github.lua.objects
 
 import com.github.Graphene
-import com.github.database.MongoStorage
+import com.github.database.MongodbContainer
 import com.github.lua.events.EventRegistry.isEvent
 import com.github.lua.events.EventRegistry.luaFunctions
 import kotlinx.serialization.Serializable
 import org.litote.kmongo.id.StringId
 import org.luaj.vm2.LuaFunction
 import org.luaj.vm2.LuaValue
+import org.luaj.vm2.LuaValue.NIL
 import org.luaj.vm2.lib.jse.CoerceJavaToLua
 
 @Serializable
@@ -28,7 +29,7 @@ data class LuaScript(
     }
 
     companion object {
-        private val luaScriptStorage = MongoStorage(LuaScript::class.java, "test", "scripts")
+        private val luaScriptStorage = MongodbContainer(LuaScript::class.java, "test", "scripts")
 
         internal fun getOrDefault(name: String) = StringId<LuaScript>(name).also {
             luaScriptStorage.get(it) ?: run {
@@ -42,9 +43,9 @@ data class LuaScript(
         private fun LuaScript.callFunc(fn: String) {
             with(Graphene.globals) { this.load(code).call() ?: return }
             val onFunc = getFunction(code, fn) ?: return
-            if (onFunc == LuaValue.NIL) return
+            if (onFunc == NIL) return
             val coerceJavaToLua = CoerceJavaToLua.coerce(this) ?: return
-            if (coerceJavaToLua == LuaValue.NIL) return
+            if (coerceJavaToLua == NIL) return
             onFunc.call(coerceJavaToLua)
             println("$_id is $fn!")
         }

@@ -5,7 +5,7 @@ import com.mongodb.client.model.UpdateOptions
 import org.bson.UuidRepresentation
 import org.litote.kmongo.*
 
-class MongoStorage<T : Any>(clazz: Class<T>, databaseName: String, collectionName: String) : Storage<T> {
+class MongodbContainer<T : Any>(clazz: Class<T>, databaseName: String, collectionName: String) : Container<T> {
     private val client =
         KMongo.createClient(MongoClientSettings.builder().uuidRepresentation(UuidRepresentation.STANDARD).build())
     private val database = client.getDatabase(databaseName)
