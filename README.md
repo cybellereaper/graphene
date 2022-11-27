@@ -1,4 +1,4 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/alicyclic/graphene/badge)](https://www.codefactor.io/repository/github/alicyclic/graphene)
+[![CodeFactor](https://www.codefactor.io/repository/github/alicyclic/graphene/badge/master)](https://www.codefactor.io/repository/github/alicyclic/graphene/overview/master)(https://www.codefactor.io/repository/github/alicyclic/graphene)
 <div align="center"><img src="assets\logo.png" width="50%"/></div>
 
 #### Graphene Lua Scripting Engine
