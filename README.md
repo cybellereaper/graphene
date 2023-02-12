@@ -1,4 +1,3 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/alicyclic/graphene/badge/master)](https://www.codefactor.io/repository/github/alicyclic/graphene/overview/master)
 <div align="center"><img src="assets\logo.png" width="50%"/></div>
 
 #### Graphene Lua Scripting Engine
@@ -24,7 +23,6 @@ end
 
 #### Why?
 
-This project was created for people, who get tired of compiling their code and want to contribute more frequently and
-faster without having to "mess" with the compiler, where they can just drag-&-drop from each server.
+This project was intended for those who are weary of compiling their code and want to contribute more regularly and quickly without having to "mess" with the compiler, where they can just drag-and-drop to each server.
 
 #### Repository is under Mozilla License.
