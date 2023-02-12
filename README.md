@@ -1,11 +1,8 @@
 <div align="center"><img src="assets\logo.png" width="50%"/></div>
 
-#### Graphene Lua Scripting Engine
+### Graphene Lua Scripting Engine
 
-A few events work right now.
-Working on improvements!
-
-#### Example Scripts
+### Examples of Scripts
 
 ```lua
 function onEnable(plugin)
@@ -17,12 +14,7 @@ function onBlockBreakEvent(event)
 end
 ```
 
-#### Dependencies
-
-![](https://skillicons.dev/icons?i=mongodb&theme=dark)
-
 #### Why?
+The goal of this project is to allow people who are tired of compiling their code to contribute more frequently and rapidly without having to "mess" with the compiler by just dragging and dropping their code to each server.
 
-This project was intended for those who are weary of compiling their code and want to contribute more regularly and quickly without having to "mess" with the compiler, where they can just drag-and-drop to each server.
-
-#### Repository is under Mozilla License.
+The repository is licensed under the WTFPL V2 Free Software License.
